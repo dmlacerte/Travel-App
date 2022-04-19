@@ -6,7 +6,7 @@ const Activity = require('../models/activities-model.js');
 //Will need to send visited / not visited states
 router.get('/', (req, res, next) => {
     Activity.find({})   
-        // .then(activities => res.json(activities))
+        .then(activities => res.json(activities))
         .catch(next);
 });
 
