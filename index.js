@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const travelController = require('./controllers/travel.js');
+const travelController = require('./backend/controllers/travel.js');
 const ejs = require('ejs');
 
 app.use( express.static( "public" ) );
