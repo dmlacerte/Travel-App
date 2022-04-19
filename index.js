@@ -9,11 +9,12 @@ app.set('views', './backend/views');
 app.set('view engine', 'ejs');
 app.use(express.json());
 app.use(express.urlencoded( {extended: true} ));
-app.use('/states', travelController);
-
-const port = process.env.PORT || 3000;
-app.listen(port, () => console.log(`App is connected to port ${port}`));
 
 app.get("/", (req, res) => {
     res.sendFile(__dirname + "/frontend/index.html");
 });
+
+app.use('/states', travelController);
+
+const port = process.env.PORT || 3000;
+app.listen(port, () => console.log(`App is connected to port ${port}`));
