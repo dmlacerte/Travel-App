@@ -15,14 +15,14 @@ app.get("/", (req, res) => {
 });
 
 app.get('/:state', (req, res, next) => {
-    res.send('Entered state route')
-    // Activity.find({ state: req.params.state })
-    //     // .then(activities => res.json(activities))
-    //     .then(activities => {
-    //         console.log(activities)
-    //         res.render('state', { activities })
-    //     })
-    //     .catch(next);
+    // res.send('Entered state route')
+    Activity.find({ state: req.params.state })
+        // .then(activities => res.json(activities))
+        .then(activities => {
+            console.log(activities)
+            res.render('state', { activities })
+        })
+        .catch(next);
 });
 
 // app.use("https://dml-mytravelapp.herokuapp.com", travelController);
