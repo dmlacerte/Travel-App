@@ -13,14 +13,14 @@ const Activity = require('../models/activities-model.js');
 
 //READ a state page with sample saved activities
 router.get('/:state', (req, res, next) => {
-    res.send('Entered state route')
-    // Activity.find({ state: req.params.state })
-    //     // .then(activities => res.json(activities))
-    //     .then(activities => {
-    //         console.log(activities)
-    //         res.render('state', { activities })
-    //     })
-    //     .catch(next);
+    // res.send('Entered state route')
+    Activity.find({ state: req.params.state })
+        // .then(activities => res.json(activities))
+        .then(activities => {
+            console.log(activities)
+            res.render('state', { activities })
+        })
+        .catch(next);
 });
 
 //READ all saved activities (of a specific type) for selected state
