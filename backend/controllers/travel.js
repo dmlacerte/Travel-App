@@ -13,7 +13,6 @@ const Activity = require('../models/activities-model.js');
 
 //READ a state page with sample saved activities
 router.get('/:state', (req, res, next) => {
-    console.log('Entered route')
     Activity.find({ state: req.params.state })
         // .then(activities => res.json(activities))
         .then(activities => {
