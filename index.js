@@ -18,10 +18,10 @@ const Activity = require('./backend//models/activities-model.js');
 
 app.get('/:state', (req, res, next) => {
     Activity.find({ state: req.params.state })
-        .then(activities => res.json(activities))
-        // .then(activities => {
-        //     res.render('state', { activities })
-        // })
+        // .then(activities => res.json(activities))
+        .then(activities => {
+            res.render('state', { activities })
+        })
         .catch(next);
 });
 
