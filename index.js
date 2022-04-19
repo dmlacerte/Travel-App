@@ -14,7 +14,7 @@ app.get("/", (req, res) => {
     res.sendFile(__dirname + "/frontend/index.html");
 });
 
-app.use("https://dml-mytravelapp.herokuapp.com/", travelController);
+app.use("https://dml-mytravelapp.herokuapp.com", travelController);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`App is connected to port ${port}`));
