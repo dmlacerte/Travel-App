@@ -25,7 +25,7 @@ app.get("/", (req, res) => {
 //         .catch(next);
 // });
 
-app.use("https://dml-mytravelapp.herokuapp.com", travelController);
+app.use("/", travelController);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`App is connected to port ${port}`));
