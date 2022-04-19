@@ -4,11 +4,12 @@ const Activity = require('../models/activities-model.js');
 
 //Homepage of all states
 //Will need to send visited / not visited states
-router.get('/', (req, res, next) => {
-    Activity.find({})   
-        .then(activities => res.json(activities))
-        .catch(next);
-});
+// router.get('/', (req, res, next) => {
+//     res.send('<h1>Hello Express!</h1>');
+//     // Activity.find({})   
+//     //     .then(activities => res.json(activities))
+//     //     .catch(next);
+// });
 
 //READ a state page with sample saved activities
 router.get('/:state', (req, res, next) => {
