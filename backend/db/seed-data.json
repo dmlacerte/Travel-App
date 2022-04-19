@@ -1,0 +1,46 @@
+[
+    {
+        "name": "The Omni",
+        "type": "Hotel",
+        "description": "",
+        "city": "Boston",
+        "state": "MA",
+        "address": "450 Summer St, Boston, MA 02210",
+        "pricePoint": "$$$",
+        "haveVisited": false,
+        "comments": ""
+    },
+    {
+        "name": "Chickadee",
+        "type": "Restaurant",
+        "description": "mediterranean fusion restaurant",
+        "city": "Boston",
+        "state": "MA",
+        "address": "21 Drydock Ave, Boston, MA 02210",
+        "pricePoint": "$$",
+        "haveVisited": false,
+        "comments": ""
+    },
+    {
+        "name": "Flight Club",
+        "type": "Entertainment",
+        "description": "bar where you can play dart games",
+        "city": "Boston",
+        "state": "MA",
+        "address": "60 Seaport Blvd Suite 215, Boston, MA 02210",
+        "pricePoint": "$$",
+        "haveVisited": false,
+        "comments": ""
+    },
+    {
+        "name": "Coast Guard House",
+        "type": "Restaurant",
+        "description": "seafood restaurant on the water",
+        "city": "Narragansett",
+        "state": "RI",
+        "address": "40 Ocean Rd, Narragansett, RI 02882",
+        "pricePoint": "$$$",
+        "haveVisited": false,
+        "comments": ""
+    }
+]

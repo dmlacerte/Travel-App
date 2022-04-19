@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+    crossorigin="anonymous"
+    />
+    <%- include('./state-style'); %>
+    <title>State Page</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top">  
+        <div>
+        <a class="navbar-brand" href="#">
+            <p class="header"> US Trip Planner Pal </p>
+        </a>
+        <p class="subtext">Easily plan & record all your domestic travels, big and small.</p>
+        </div>
+    </nav>
+    <h1> <%=activities[0].state%> </h1>
+    <div class="d-flex flex-row justify-content-between w-75 mx-auto">
+        <div class="p-2 border border-info w-30" align="center">
+            <!-- img source: https://as1.ftcdn.net/v2/jpg/03/24/73/92/1000_F_324739203_keeq8udvv0P2h1MLYJ0GLSlTBagoXS48.jpg -->
+            <div style="background-image: url('/imgs/rest.jpeg')">
+                <h3>Restaurants</h3>
+            </div>
+            <a href="http://localhost:3000/states/<%=activities[0].state%>/Restaurant">View All</a>
+        </div>
+        <div class="p-2 border border-info w-30" align="center">
+            <!-- img source: https://www.eherg.com/blog/2017/12/24/the-best-free-views-of-detroits-unique-skyline -->
+            <div style="background-image: url('/imgs/hotels.jpeg')">
+                <h3>Hotels</h3>
+            </div>
+            <a href="http://localhost:3000/states/<%=activities[0].state%>/Hotel">View All</a>
+        </div>
+        <div class="p-2 border border-info w-30" align="center">
+            <!-- img source: https://architecture.desktopnexus.com/wallpaper/1415155/ -->
+            <div style="background-image: url('/imgs/entertainment.jpeg')">
+                <h3>Entertainment</h3>
+            </div>
+            <a href="http://localhost:3000/states/<%=activities[0].state%>/Entertainment">View All</a>
+        </div>
+    </div>
+</body>
+</html>

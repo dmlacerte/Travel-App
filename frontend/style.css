@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+html, h1, h2, h3, h4, h5, h6, a, p {
+    font-family: "Raleway";
+}
+
+html {
+    background-color: whitesmoke;
+}
+
+.header {
+    font-weight: bold;
+    font-size: larger;
+}
+
+.subtext {
+    font-size: smaller;
+    color: lightslategray;
+}
+
+.navbar { 
+    background: rgb(156, 210, 228);
+}
+
+.navbar-brand {
+    color: white;
+    padding: 0px;
+}
+
+p {
+    margin: 0px;
+}
+
+.intro-message {
+    bottom: 5%;
+    position: fixed;
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+}
+
+path {
+    stroke: rgb(151, 149, 149);
+    fill:lightgray !important;
+    transition: fill .2s ease;
+    transform-origin: center center;
+}
+
+path:hover {
+    fill: lightblue !important;
+    cursor: pointer;
+}
+
+#us-map {
+    display: block;
+    position: absolute;
+    top: 10%;
+    bottom: 10%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+}
+
+#state-name-box {
+    opacity: 0;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 18px;
+    position: fixed;
+    color: white;
+    /* font-family: "Poppins"; */
+    background-color: rgb(100, 99, 99);
+    width: fit-content;
+    /* transform: translateX(-50%); */
+    z-index: 1;
+    box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.55);
+}

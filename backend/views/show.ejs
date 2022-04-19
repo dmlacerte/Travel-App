@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+    crossorigin="anonymous"
+    />
+    <%- include('./show-style'); %>
+    <title>Document</title>
+</head>
+<body class="container">
+    <h1><%=activities[0].type%></h1>
+    <div>
+        <ul class="list-group">
+            <% for (let i = 0; i < activities.length; i++) { %>
+            <li class="list-group-item d-flex justify-content-between">
+            <div> <%= activities[i].name %> </div>
+            <div class="links">
+                <a href="" class="btn btn-primary">Edit</a>
+                <form action="/states/<%=activities[i].state%>/<%=activities[i].type%>/<%=activities[i].id%>?_method=DELETE" method="POST" class="d-inline">
+                <input type="submit" value="Delete" class="btn btn-danger" />
+                </form>
+            </div>
+            </li>
+            <% } %>
+        </ul>
+    </div>
+    <div>
+        <nav class="navbar navbar-expand-lg fixed-bottom navbar-light bg-light"> 
+        <a class="nav-link" href="#">Add New</a>
+        <a class="nav-link" href="#">Go Back</a>
+    </div>
+</body>
+</html>
