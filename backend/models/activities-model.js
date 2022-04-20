@@ -9,7 +9,7 @@ const ActivitySchema = new mongoose.Schema(
         state: { type: String, required: true },
         address: String,
         pricePoint: String,
-        haveVisited: { type: Boolean, default: false },
+        // haveVisited: { type: Boolean, default: false },
         comments: String
     }
 );
