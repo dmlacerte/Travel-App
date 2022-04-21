@@ -1,39 +1,22 @@
 const express = require('express');
 const router = express.Router();
 const Activity = require('../models/activities-model.js');
-// const stateMap = require('../public/js/stateMap.js');
 
 function pageRefresh(req, res, next) {
-    Activity.find( { state: req.params.state, type: req.params.activities} )
-        // .then(activities => res.json(activities))
-        .then(activities => res.render('show', { activities }))
+    Activity.find( { state: req.params.state, type: req.params.activities } )
+        .then(activities => {res.render('show', { activities, state: req.params.state, type: req.params.activities })})
         .catch(next);
 }
 
-//Homepage of all states
-//Will need to send visited / not visited states
-// router.get('/', (req, res, next) => {
-//     res.send('<h1>Hello Express!</h1>');
-//     // Activity.find({})   
-//     //     .then(activities => res.json(activities))
-//     //     .catch(next);
-// });
-
 //READ a state page with sample saved activities
 router.get('/:state', (req, res, next) => {
-    // res.send('Entered state route')
     Activity.find({ state: req.params.state })
-        // .then(activities => res.json(activities))
-        .then(activities => res.render('state', { activities }))
+        .then(activities => res.render('state', { activities, state: req.params.state }))
         .catch(next);
 });
 
 //READ all saved activities (of a specific type) for selected state
 router.get('/:state/:activities', (req, res, next) => {
-    // Activity.find( { state: req.params.state, type: req.params.activities} )
-    //     // .then(activities => res.json(activities))
-    //     .then(activities => res.render('show', { activities }))
-    //     .catch(next);
     pageRefresh(req, res, next);
 });
 

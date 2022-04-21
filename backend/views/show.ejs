@@ -18,28 +18,30 @@
 <body>
     <div align="center">
         <!-- img source: https://as1.ftcdn.net/v2/jpg/03/24/73/92/1000_F_324739203_keeq8udvv0P2h1MLYJ0GLSlTBagoXS48.jpg -->
-        <div id="image-banner" style="background-image: url('/imgs/hotels-large.jpeg')">
-            <h1><%=activities[0].type%></h1>
+        <div id="image-banner" style="background-image: url('/imgs/hotels-large.jpeg')">  
+            <h1><%=type%></h1>
         </div>
     </div>
     <div class="activity-list">
         <ul class="list-group">
-            <% for (let i = 0; i < activities.length; i++) { %>
-            <li class="list-group-item d-flex justify-content-between">
-            <div> <%= activities[i].name %> </div>
-            <div class="links">
-                <button type="button" class="btn btn-primary editModalButton" data-toggle="modal" data-target="#editModal" id="<%=activities[i]._id%>">View / Edit</button> 
-                <form action="/<%=activities[i].state%>/<%=activities[i].type%>/<%=activities[i].id%>?_method=DELETE" method="POST" class="d-inline">
-                    <input type="submit" value="Delete" class="btn btn-danger" />
-                </form>
-            </div>
-            </li>
+            <% let i = 0 %>
+            <% while (i < activities.length) { %>
+                <li class="list-group-item d-flex justify-content-between">
+                <div> <%= activities[i].name %> </div>
+                <div class="links">
+                    <button type="button" class="btn btn-primary editModalButton" data-toggle="modal" data-target="#editModal" id="<%=activities[i]._id%>">View / Edit</button> 
+                    <form action="/<%=activities[i].state%>/<%=activities[i].type%>/<%=activities[i].id%>?_method=DELETE" method="POST" class="d-inline">
+                        <input type="submit" value="Delete" class="btn btn-danger" />
+                    </form>
+                </div>
+                </li>
+                <% i++ %>
             <% } %>
         </ul>
     </div>
     <div>
         <nav class="navbar navbar-expand-lg fixed-bottom navbar-light bg-light"> 
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addNewModal">Add New</button>  
+        <button type="button" class="btn btn-primary addNewModal" data-toggle="modal" data-target="#addNewModal">Add New</button>  
         <a class="nav-link" href="#">Go Back</a>
     </div>
     <!-- Add New Modal -->
@@ -52,18 +54,20 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <form action="/<%=activities[0].state%>/<%=activities[0].type%>" method="POST" class="d-inline">
+            <form action="/<%=state%>/<%=type%>" method="POST" class="d-inline newModalForm">
                 <div class="modal-body">
                     <label for="name">Name (Required):</label>
                     <input type="text" id="name" name="name" class="form-control" />
                     <label for="type">Type (Required):</label>
-                    <input type="text" id="type" name="type" class="form-control" />
+                    <select id="type" name="type" class="form-control editModalField" value="">
+                    </select>
                     <label for="description">Description:</label>
                     <input type="text" id="description" name="description" class="form-control" />
                     <label for="city">City (Required):</label>
                     <input type="text" id="city" name="city" class="form-control" />
                     <label for="state">State (Required):</label>
-                    <input type="text" id="state" name="state" class="form-control" />
+                    <select id="state" name="state" class="form-control editModalField" value="">
+                    </select>
                     <label for="address">Address:</label>
                     <input type="text" id="address" name="address" class="form-control" />
                     <label for="pricePoint">Price Point:</label>
@@ -94,27 +98,25 @@
             <form action="" method="POST" class="d-inline editModalForm">
                 <div class="modal-body">
                     <label for="name">Name (Required):</label>
-                    <input type="text" id="name" name="name" class="form-control editModalField" value=""/>
+                    <input type="text" id="name" name="name" class="form-control" value=""/>
                     <label for="type">Type (Required):</label>
-                    <select id="type" name="type" class="form-control editModalField" value="">
-                        <!-- <option value="Restaurant">Restaurant</option>
-                        <option value="Hotel">Hotel</option>
-                        <option value="Entertainment">Entertainment</option> -->
+                    <select id="type" name="type" class="form-control" value="">
                     </select>
                     <label for="description">Description:</label>
-                    <input type="text" id="description" name="description" class="form-control editModalField" value="" />
+                    <input type="text" id="description" name="description" class="form-control" value="" />
                     <label for="city">City (Required):</label>
-                    <input type="text" id="city" name="city" class="form-control editModalField" value="" />
+                    <input type="text" id="city" name="city" class="form-control" value="" />
                     <label for="state">State (Required):</label>
-                    <input type="text" id="state" name="state" class="form-control editModalField" value="" />
+                    <select id="state" name="state" class="form-control" value="">
+                    </select>
                     <label for="address">Address:</label>
-                    <input type="text" id="address" name="address" class="form-control editModalField" value="" />
+                    <input type="text" id="address" name="address" class="form-control" value="" />
                     <label for="pricePoint">Price Point:</label>
-                    <input type="text" id="pricePoint" name="pricePoint" class="form-control editModalField" value="" />
+                    <input type="text" id="pricePoint" name="pricePoint" class="form-control" value="" />
                     <!-- <input class="form-check-input" type="checkbox" id="haveVisited" name="haveVisited" />
                     <label class="form-check-label" for="haveVisited">Have Visited?</label> -->
                     <label for="comments">Comments:</label>
-                    <input type="text" id="comments" name="comments" class="form-control editModalField" value="" />
+                    <input type="text" id="comments" name="comments" class="form-control" value="" />
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

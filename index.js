@@ -14,11 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded( {extended: true} ));
 app.use(methodOverride('_method'));
 
-app.get("/api/restaurant", (req, res) => {
-    res.send('Hello')
-})
-
-app.get("/api/restaurant/:id", (req, res) => {
+app.get("/api/activity/:id", (req, res) => {
     Activity.findById(req.params.id)
         .then((data) => res.json(data));
 })
