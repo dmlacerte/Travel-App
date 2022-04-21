@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Activity = require('../models/activities-model.js');
+// const stateMap = require('../public/js/stateMap.js');
 
 function pageRefresh(req, res, next) {
     Activity.find( { state: req.params.state, type: req.params.activities} )
@@ -38,7 +39,6 @@ router.get('/:state/:activities', (req, res, next) => {
 
 //CREATE a new activity
 router.post('/:state/:activities', (req, res, next) => {
-    console.log(req.body)
     Activity.create(req.body)
         .then(() => pageRefresh(req, res, next))
         .catch(next);

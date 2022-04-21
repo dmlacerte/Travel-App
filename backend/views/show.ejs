@@ -10,18 +10,25 @@
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
     crossorigin="anonymous"
     />
-    <%- include('./show-style'); %>
+    <link rel="stylesheet" type="text/css" href="/css/show.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="module" src="/js/show.js" defer></script>
     <title>Document</title>
 </head>
 <body>
-    <h1><%=activities[0].type%></h1>
-    <div>
+    <div align="center">
+        <!-- img source: https://as1.ftcdn.net/v2/jpg/03/24/73/92/1000_F_324739203_keeq8udvv0P2h1MLYJ0GLSlTBagoXS48.jpg -->
+        <div id="image-banner" style="background-image: url('/imgs/hotels-large.jpeg')">
+            <h1><%=activities[0].type%></h1>
+        </div>
+    </div>
+    <div class="activity-list">
         <ul class="list-group">
             <% for (let i = 0; i < activities.length; i++) { %>
             <li class="list-group-item d-flex justify-content-between">
             <div> <%= activities[i].name %> </div>
             <div class="links">
-                <a href="" class="btn btn-primary">Edit</a>
+                <button type="button" class="btn btn-primary editModalButton" data-toggle="modal" data-target="#editModal" id="<%=activities[i]._id%>">View / Edit</button> 
                 <form action="/<%=activities[i].state%>/<%=activities[i].type%>/<%=activities[i].id%>?_method=DELETE" method="POST" class="d-inline">
                     <input type="submit" value="Delete" class="btn btn-danger" />
                 </form>
@@ -32,10 +39,11 @@
     </div>
     <div>
         <nav class="navbar navbar-expand-lg fixed-bottom navbar-light bg-light"> 
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add New</button>  
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addNewModal">Add New</button>  
         <a class="nav-link" href="#">Go Back</a>
     </div>
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="addNewModal" aria-hidden="true">
+    <!-- Add New Modal -->
+    <div class="modal fade" id="addNewModal" tabindex="-1" role="dialog" aria-labelledby="addNewModal" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -60,14 +68,57 @@
                     <input type="text" id="address" name="address" class="form-control" />
                     <label for="pricePoint">Price Point:</label>
                     <input type="text" id="pricePoint" name="pricePoint" class="form-control" />
-                    <input class="form-check-input" type="checkbox" id="haveVisited" name="haveVisited" />
-                    <label class="form-check-label" for="haveVisited">Have Visited?</label>
+                    <!-- <input class="form-check-input" type="checkbox" id="haveVisited" name="haveVisited" />
+                    <label class="form-check-label" for="haveVisited">Have Visited?</label> -->
                     <label for="comments">Comments:</label>
                     <input type="text" id="comments" name="comments" class="form-control" />
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <input type="submit" class="btn btn-primary" />
+                </div>
+            </form>
+          </div>
+        </div>
+    </div> 
+    <!-- Edit Modal -->
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="editModal">Edit Activity</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form action="" method="POST" class="d-inline editModalForm">
+                <div class="modal-body">
+                    <label for="name">Name (Required):</label>
+                    <input type="text" id="name" name="name" class="form-control editModalField" value=""/>
+                    <label for="type">Type (Required):</label>
+                    <select id="type" name="type" class="form-control editModalField" value="">
+                        <!-- <option value="Restaurant">Restaurant</option>
+                        <option value="Hotel">Hotel</option>
+                        <option value="Entertainment">Entertainment</option> -->
+                    </select>
+                    <label for="description">Description:</label>
+                    <input type="text" id="description" name="description" class="form-control editModalField" value="" />
+                    <label for="city">City (Required):</label>
+                    <input type="text" id="city" name="city" class="form-control editModalField" value="" />
+                    <label for="state">State (Required):</label>
+                    <input type="text" id="state" name="state" class="form-control editModalField" value="" />
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" name="address" class="form-control editModalField" value="" />
+                    <label for="pricePoint">Price Point:</label>
+                    <input type="text" id="pricePoint" name="pricePoint" class="form-control editModalField" value="" />
+                    <!-- <input class="form-check-input" type="checkbox" id="haveVisited" name="haveVisited" />
+                    <label class="form-check-label" for="haveVisited">Have Visited?</label> -->
+                    <label for="comments">Comments:</label>
+                    <input type="text" id="comments" name="comments" class="form-control editModalField" value="" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <input type="submit" class="btn btn-primary submitButton" />
                 </div>
             </form>
           </div>

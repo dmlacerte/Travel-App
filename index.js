@@ -4,6 +4,8 @@ const travelController = require('./backend/controllers/travel.js');
 const methodOverride = require('method-override');
 const ejs = require('ejs');
 
+const Activity = require('./backend/models/activities-model.js');
+
 app.use( express.static( "frontend" ) );
 app.use( express.static( "./backend/public" ) );
 app.set('views', './backend/views');
@@ -11,6 +13,15 @@ app.set('view engine', 'ejs');
 app.use(express.json());
 app.use(express.urlencoded( {extended: true} ));
 app.use(methodOverride('_method'));
+
+app.get("/api/restaurant", (req, res) => {
+    res.send('Hello')
+})
+
+app.get("/api/restaurant/:id", (req, res) => {
+    Activity.findById(req.params.id)
+        .then((data) => res.json(data));
+})
 
 app.get("/", (req, res) => {
     res.sendFile(__dirname + "/frontend/index.html");

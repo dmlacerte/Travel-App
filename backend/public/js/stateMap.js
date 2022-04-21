@@ -1,4 +1,4 @@
-var stateMap = {
+export const stateMap = {
     "AK": "Alaska",
     "AL": "Alabama",
     "AR": "Arkansas",
@@ -49,5 +49,5 @@ var stateMap = {
     "WA": "Washington",
     "WI": "Wisconsin",
     "WV": "West Virginia",
-    "WY": "Wyoming",
-};
+    "WY": "Wyoming"
+}
