@@ -11,6 +11,7 @@
     crossorigin="anonymous"
     />
     <link rel="stylesheet" type="text/css" href="/css/state.css">
+    <script type="module" src="/js/state.js" defer></script>
     <title>State Page</title>
 </head>
 <body>
@@ -22,21 +23,21 @@
         <p class="subtext">Easily plan & record all your domestic travels, big and small.</p>
         </div>
     </nav>
-    <h1> <%=state%> </h1>
+    <h1 id="stateHeader" align="center"> <%=state%> </h1>
     <div class="d-flex flex-row justify-content-between w-75 mx-auto">
         <div class="p-2 border border-info w-30" align="center">
             <!-- img source: https://as1.ftcdn.net/v2/jpg/03/24/73/92/1000_F_324739203_keeq8udvv0P2h1MLYJ0GLSlTBagoXS48.jpg -->
             <div style="background-image: url('/imgs/rest.jpeg')">
                 <h3>Restaurants</h3>
             </div>
-            <a href="http://localhost:3000/<%=state%>/Restaurants">View All</a>
+            <a href="http://localhost:3000/<%=state%>/Restaurant">View All</a>
         </div>
         <div class="p-2 border border-info w-30" align="center">
             <!-- img source: https://www.eherg.com/blog/2017/12/24/the-best-free-views-of-detroits-unique-skyline -->
             <div style="background-image: url('/imgs/hotels.jpeg')">
                 <h3>Hotels</h3>
             </div>
-            <a href="http://localhost:3000/<%=state%>/Hotels">View All</a>
+            <a href="http://localhost:3000/<%=state%>/Hotel">View All</a>
         </div>
         <div class="p-2 border border-info w-30" align="center">
             <!-- img source: https://architecture.desktopnexus.com/wallpaper/1415155/ -->

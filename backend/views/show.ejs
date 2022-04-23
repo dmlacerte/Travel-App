@@ -13,13 +13,19 @@
     <link rel="stylesheet" type="text/css" href="/css/show.css">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script type="module" src="/js/show.js" defer></script>
-    <title>Document</title>
+    <title><%=state%></title>
 </head>
 <body>
     <div align="center">
         <!-- img source: https://as1.ftcdn.net/v2/jpg/03/24/73/92/1000_F_324739203_keeq8udvv0P2h1MLYJ0GLSlTBagoXS48.jpg -->
         <div id="image-banner" style="background-image: url('/imgs/hotels-large.jpeg')">  
-            <h1><%=type%></h1>
+            <% if (type === 'Restaurant') { %>
+                <h1>Restaurants</h1>
+            <% } else if (type === 'Hotel') { %> 
+                <h1>Hotels</h1>
+            <% } else { %>
+                <h1>Entertainment</h1>
+            <% } %>
         </div>
     </div>
     <div class="activity-list">
@@ -57,16 +63,16 @@
             <form action="/<%=state%>/<%=type%>" method="POST" class="d-inline newModalForm">
                 <div class="modal-body">
                     <label for="name">Name (Required):</label>
-                    <input type="text" id="name" name="name" class="form-control" />
+                    <input type="text" id="name" name="name" class="form-control" required/>
                     <label for="type">Type (Required):</label>
-                    <select id="type" name="type" class="form-control editModalField" value="">
+                    <select id="type" name="type" class="form-control editModalField" value="" required>
                     </select>
                     <label for="description">Description:</label>
                     <input type="text" id="description" name="description" class="form-control" />
                     <label for="city">City (Required):</label>
-                    <input type="text" id="city" name="city" class="form-control" />
+                    <input type="text" id="city" name="city" class="form-control" required/>
                     <label for="state">State (Required):</label>
-                    <select id="state" name="state" class="form-control editModalField" value="">
+                    <select id="state" name="state" class="form-control editModalField" value="" required>
                     </select>
                     <label for="address">Address:</label>
                     <input type="text" id="address" name="address" class="form-control" />
@@ -98,16 +104,16 @@
             <form action="" method="POST" class="d-inline editModalForm">
                 <div class="modal-body">
                     <label for="name">Name (Required):</label>
-                    <input type="text" id="name" name="name" class="form-control" value=""/>
+                    <input type="text" id="name" name="name" class="form-control" value="" required/>
                     <label for="type">Type (Required):</label>
-                    <select id="type" name="type" class="form-control" value="">
+                    <select id="type" name="type" class="form-control" value="" required>
                     </select>
                     <label for="description">Description:</label>
                     <input type="text" id="description" name="description" class="form-control" value="" />
                     <label for="city">City (Required):</label>
-                    <input type="text" id="city" name="city" class="form-control" value="" />
+                    <input type="text" id="city" name="city" class="form-control" value="" required/>
                     <label for="state">State (Required):</label>
-                    <select id="state" name="state" class="form-control" value="">
+                    <select id="state" name="state" class="form-control" value="" required>
                     </select>
                     <label for="address">Address:</label>
                     <input type="text" id="address" name="address" class="form-control" value="" />
