@@ -3,6 +3,8 @@ const editModalButtons = document.querySelectorAll('.editModalButton');
 const editModalForm = document.querySelector('.editModalForm');
 const newModalButton = document.querySelector('.addNewModal');
 const newModalForm = document.querySelector('.newModalForm');
+const filterButton = document.querySelector('#filterButton');
+const filterOptions = document.querySelectorAll('.filterOptions');
 
 //Data Arrays
 const typeOptions = ["Restaurant", "Hotel", "Entertainment"];
@@ -29,7 +31,6 @@ function resetDropdownOptions(arr, elementToUpdate) {
 function updateDropdownSelection(dataSelection, arr, elementToUpdate) {
     let index = arr.findIndex(option => option === dataSelection);
     elementToUpdate[index].setAttribute('selected', true);
-    console.log(elementToUpdate);
 }
 
 //Update Edit Modal when button selected
@@ -38,8 +39,13 @@ editModalButtons.forEach(button => button.addEventListener('click', updateEditMo
 function updateEditModal(ev) {
     axios.get(`http://localhost:3000/api/activity/${ev.target.id}`)    
         .then((activity) => {
-            console.log(ev.target)
-            editModalForm.setAttribute('action', `/${activity.data.state}/${activity.data.type}/${activity.data._id}?_method=PUT`)
+            //Pull current page filters
+            let queryStart = filterButton.href.indexOf('?');
+            let queryFilter = filterButton.href.slice(queryStart + 1);
+            console.log(`filter: ${queryFilter}`)
+
+            //Set Edit fields
+            editModalForm.setAttribute('action', `http://localhost:3000/${activity.data.state}/${activity.data.type}/${activity.data._id}?_method=PUT&${queryFilter}`)
             editModalForm[0].setAttribute('value', activity.data.name)
             let currentType = activity.data.type
             resetDropdownOptions(typeOptions, editModalForm[1])
@@ -61,4 +67,18 @@ newModalButton.addEventListener('click', updateNewModal);
 function updateNewModal() {
     resetDropdownOptions(typeOptions, newModalForm[1])
     resetDropdownOptions(stateOptions, newModalForm[4])
+}
+
+//Update query parameters when filter buttons selected
+filterButton.addEventListener('mouseover', updateFilterQuery);
+
+function updateFilterQuery(ev) {
+    let query = [];
+    for (let i = 0; i < filterOptions.length; i++) {
+        if (filterOptions[i].value) {
+            query.push(`${encodeURIComponent(filterOptions[i].name)}=${encodeURIComponent(filterOptions[i].value)}`);
+        }
+    }
+    let queryStart = filterButton.href.indexOf('?');
+    filterButton.setAttribute('href', filterButton.href.slice(0, queryStart + 1) + query.join(`&`));
 }

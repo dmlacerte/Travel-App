@@ -3,8 +3,10 @@ const router = express.Router();
 const Activity = require('../models/activities-model.js');
 
 function pageRefresh(req, res, next) {
-    Activity.find( { state: req.params.state, type: req.params.activities } )
-        .then(activities => {res.render('show', { activities, state: req.params.state, type: req.params.activities })})
+    req.query.state = req.params.state;
+    req.query.type = req.params.activities;
+    Activity.find( req.query )
+        .then(activities => {res.render('show', { activities, state: req.params.state, type: req.params.activities, query: req.query })})
         .catch(next);
 }
 

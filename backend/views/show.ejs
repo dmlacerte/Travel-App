@@ -28,6 +28,67 @@
             <% } %>
         </div>
     </div>
+    <% delete query.state %> 
+    <% delete query.type %>
+    <% let currentFilter = Object.keys(query).map(key => `${key}=${query[key]}`).join('&') %>
+    <div>
+        <form action="" method="get" class="d-inline">
+            <div class="modal-body">
+                <label for="name">Name:</label>
+                <select id="name" name="name" class="form-control filterOptions" value="">
+                    <option disabled selected value> -- </option>
+                    <% let nameOptionsArr = [] %> 
+                    <% for (let i = 0; i < activities.length; i++) { %>
+                        <!-- Only add option if not a duplicate -->
+                        <% if (!nameOptionsArr.includes(activities[i].name)) { %>
+                            <% nameOptionsArr.push(activities[i].name) %> 
+                            <!-- If filter currently set, default to that option -->
+                            <option value="<%=activities[i].name%>" 
+                                <% if (Object.values(query).includes(activities[i].name)) { %>
+                                    selected=true
+                                <% } %>
+                                ><%=activities[i].name%>
+                            </option>
+                        <% } %> 
+                    <% } %>
+                </select>
+                <label for="city">City:</label>
+                <select id="city" name="city" class="form-control filterOptions" value="">
+                    <option disabled selected value> -- </option>
+                    <% let cityOptionsArr = [] %> 
+                    <% for (let i = 0; i < activities.length; i++) { %>
+                        <% if (!cityOptionsArr.includes(activities[i].city)) { %>
+                            <% cityOptionsArr.push(activities[i].city) %> 
+                            <option value="<%=activities[i].city%>" 
+                                <% if (Object.values(query).includes(activities[i].city)) { %>
+                                    selected=true
+                                <% } %>
+                                ><%=activities[i].city%>
+                            </option>
+                        <% } %> 
+                    <% } %>
+                </select>
+                <label for="pricePoint">Price Point:</label>
+                <select id="pricePoint" name="pricePoint" class="form-control filterOptions" value="">
+                    <option disabled selected value> -- </option>
+                    <% let priceOptionsArr = ["$", "$$", "$$$", "$$$$"] %> 
+                    <% for (let i = 0; i < priceOptionsArr.length; i++) { %>
+                        <option value="<%=priceOptionsArr[i]%>" 
+                            <% if (Object.values(query).includes(priceOptionsArr[i])) { %>
+                                selected=true
+                            <% } %>
+                            ><%=priceOptionsArr[i]%>
+                        </option> 
+                    <% } %>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <a href="http://localhost:3000/<%=state%>/<%=type%>/?<%=currentFilter%>" id="filterButton">Filter</a>
+                <a href="http://localhost:3000/<%=state%>/<%=type%>/" id="resetFilterButton">Reset Filter</a>
+            </div>
+        </form>
+        
+    </div>
     <div class="activity-list">
         <ul class="list-group">
             <% let i = 0 %>
@@ -36,7 +97,7 @@
                 <div> <%= activities[i].name %> </div>
                 <div class="links">
                     <button type="button" class="btn btn-primary editModalButton" data-toggle="modal" data-target="#editModal" id="<%=activities[i]._id%>">View / Edit</button> 
-                    <form action="/<%=activities[i].state%>/<%=activities[i].type%>/<%=activities[i].id%>?_method=DELETE" method="POST" class="d-inline">
+                    <form action="/<%=activities[i].state%>/<%=activities[i].type%>/<%=activities[i].id%>?_method=DELETE&<%=currentFilter%>" method="POST" class="d-inline">
                         <input type="submit" value="Delete" class="btn btn-danger" />
                     </form>
                 </div>
@@ -60,7 +121,7 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <form action="/<%=state%>/<%=type%>" method="POST" class="d-inline newModalForm">
+            <form action="/<%=state%>/<%=type%>?_method=POST&<%=currentFilter%>" method="POST" class="d-inline newModalForm">
                 <div class="modal-body">
                     <label for="name">Name (Required):</label>
                     <input type="text" id="name" name="name" class="form-control" required/>

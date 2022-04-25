@@ -30,6 +30,16 @@
             <div style="background-image: url('/imgs/rest.jpeg')">
                 <h3>Restaurants</h3>
             </div>
+            <% let restArr = activities.filter(activity => activity.type === 'Restaurant') %>
+            <% let restCount %>
+            <% restArr.length > 5 ? restCount = 5 : restCount = restArr.length %> 
+            <ul class="list-group">
+                <% for (let i = 0; i < restCount; i++) { %>
+                    <li class="d-flex justify-content-between">
+                        <div> <%= restArr[i].name %> </div>
+                    </li>
+                <% } %>
+            </ul>
             <a href="http://localhost:3000/<%=state%>/Restaurant">View All</a>
         </div>
         <div class="p-2 border border-info w-30" align="center">
@@ -37,6 +47,16 @@
             <div style="background-image: url('/imgs/hotels.jpeg')">
                 <h3>Hotels</h3>
             </div>
+            <% let hotelArr = activities.filter(activity => activity.type === 'Hotel') %>
+            <% let hotelCount %>
+            <% hotelArr.length > 5 ? hotelCount = 5 : hotelCount = hotelArr.length %> 
+            <ul class="list-group">
+                <% for (let i = 0; i < hotelCount; i++) { %>
+                    <li class="d-flex justify-content-between">
+                        <div> <%= hotelArr[i].name %> </div>
+                    </li>
+                <% } %>
+            </ul>
             <a href="http://localhost:3000/<%=state%>/Hotel">View All</a>
         </div>
         <div class="p-2 border border-info w-30" align="center">
@@ -44,6 +64,16 @@
             <div style="background-image: url('/imgs/entertainment.jpeg')">
                 <h3>Entertainment</h3>
             </div>
+            <% let entertainmentArr = activities.filter(activity => activity.type === 'Entertainment') %>
+            <% let entertainmentCount %>
+            <% entertainmentArr.length > 5 ? entertainmentCount = 5 : entertainmentCount = entertainmentArr.length %> 
+            <ul class="list-group">
+                <% for (let i = 0; i < entertainmentCount; i++) { %>
+                    <li class="d-flex justify-content-between">
+                        <div> <%= entertainmentArr[i].name %> </div>
+                    </li>
+                <% } %>
+            </ul>
             <a href="http://localhost:3000/<%=state%>/Entertainment">View All</a>
         </div>
     </div>
