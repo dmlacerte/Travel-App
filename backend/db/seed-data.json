@@ -7,7 +7,8 @@
         "state": "MA",
         "address": "450 Summer St, Boston, MA 02210",
         "pricePoint": "$$$",
-        "haveVisited": false,
+        "relatedTrip": "",
+        "rating": "Pending Visit",
         "comments": ""
     },
     {
@@ -18,7 +19,8 @@
         "state": "MA",
         "address": "21 Drydock Ave, Boston, MA 02210",
         "pricePoint": "$$",
-        "haveVisited": false,
+        "relatedTrip": "",
+        "rating": "5",
         "comments": ""
     },
     {
@@ -29,7 +31,8 @@
         "state": "MA",
         "address": "60 Seaport Blvd Suite 215, Boston, MA 02210",
         "pricePoint": "$$",
-        "haveVisited": false,
+        "relatedTrip": "",
+        "rating": "Pending Visit",
         "comments": ""
     },
     {
@@ -40,7 +43,8 @@
         "state": "RI",
         "address": "40 Ocean Rd, Narragansett, RI 02882",
         "pricePoint": "$$$",
-        "haveVisited": false,
+        "relatedTrip": "",
+        "rating": "4",
         "comments": ""
     }
 ]

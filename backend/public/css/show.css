@@ -8,6 +8,32 @@ html, body {
     background-color: whitesmoke;
 }
 
+#filterBox {
+    position: fixed;
+    margin: 3% 0.6%;
+}
+
+#contentBox {
+    right: 0px;
+    position: relative;
+    left: 25%;
+    margin: 10px 0px 50px 0px;
+}
+
+#filtersTitle {
+    font-weight: 900;
+    font-size: larger;
+}
+
+.btn {
+    opacity: 0.85;
+    margin: 2px;
+}
+
+label {
+    margin-top: 6px;
+}
+
 .activity-list {
     padding: 5px 15px;
 }
@@ -22,4 +48,5 @@ h1 {
     background-repeat: no-repeat;
     background-size: 100%;
     height: 75px;
+    opacity: 0.8;
 }

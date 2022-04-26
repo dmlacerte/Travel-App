@@ -8,6 +8,8 @@ const filterOptions = document.querySelectorAll('.filterOptions');
 
 //Data Arrays
 const typeOptions = ["Restaurant", "Hotel", "Entertainment"];
+const pricePointOptions = ["Pending Visit", "$", "$$", "$$$", "$$$$"];
+const ratingOptions = ["Pending Visit", "1", "2", "3", "4", "5"];
 import {stateMap} from './stateMap.js';
 const stateOptions = Object.keys(stateMap);
 
@@ -56,8 +58,14 @@ function updateEditModal(ev) {
             resetDropdownOptions(stateOptions, editModalForm[4])
             updateDropdownSelection(currentState, stateOptions, editModalForm[4])
             editModalForm[5].setAttribute('value', activity.data.address)
-            editModalForm[6].setAttribute('value', activity.data.pricePoint)
-            editModalForm[7].setAttribute('value', activity.data.comments)
+            let currentPrice = activity.data.pricePoint
+            resetDropdownOptions(pricePointOptions, editModalForm[6])
+            updateDropdownSelection(currentPrice, pricePointOptions, editModalForm[6])
+            editModalForm[7].setAttribute('value', activity.data.relatedTrip)
+            let currentRating = activity.data.rating
+            resetDropdownOptions(ratingOptions, editModalForm[8])
+            updateDropdownSelection(currentRating, ratingOptions, editModalForm[8])
+            editModalForm[9].setAttribute('value', activity.data.comments)
         });
 }
 
@@ -67,6 +75,8 @@ newModalButton.addEventListener('click', updateNewModal);
 function updateNewModal() {
     resetDropdownOptions(typeOptions, newModalForm[1])
     resetDropdownOptions(stateOptions, newModalForm[4])
+    resetDropdownOptions(pricePointOptions, newModalForm[6])
+    resetDropdownOptions(ratingOptions, newModalForm[8])
 }
 
 //Update query parameters when filter buttons selected

@@ -9,7 +9,8 @@ const ActivitySchema = new mongoose.Schema(
         state: { type: String, required: true },
         address: String,
         pricePoint: String,
-        // haveVisited: { type: Boolean, default: false },
+        relatedTrip: String,
+        rating: String,
         comments: String
     }
 );
