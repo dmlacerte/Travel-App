@@ -1,8 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const Activity = require('../models/activities-model.js');
+const State = require('../models/state-model.js');
 
-function pageRefresh(req, res, next) {
+function statePageRefresh(req, res, next, stateData) {
+    Activity.find({ state: req.params.state })
+        .then(activities => res.render('state', { activities, stateData, state: req.params.state }))
+        .catch(next);
+}
+
+function activityPageRefresh(req, res, next) {
     req.query.state = req.params.state;
     req.query.type = req.params.activities;
     Activity.find( req.query )
@@ -10,36 +17,61 @@ function pageRefresh(req, res, next) {
         .catch(next);
 }
 
+router.get('/api/updateStateData', (req, res, next) => {
+    State.find({})
+        .then((stateData) => res.json(stateData));
+});
+
 //READ a state page with sample saved activities
 router.get('/:state', (req, res, next) => {
-    Activity.find({ state: req.params.state })
-        .then(activities => res.render('state', { activities, state: req.params.state }))
+    State.findOne({ name: req.params.state })
+        .then(stateData => statePageRefresh(req, res, next, stateData))
+        .catch(next);
+});
+
+//UPDATE state data
+router.put('/:state/updateData', (req, res, next) => {
+    State.findOneAndUpdate(
+            { name: req.params.state }, 
+            { 
+                haveVisited: req.body.haveVisited === 'on',
+                wantToVisit: req.body.wantToVisit === 'on'
+            },
+            { new: true }
+        )
+        .then(stateData => statePageRefresh(req, res, next, stateData))
         .catch(next);
 });
 
 //READ all saved activities (of a specific type) for selected state
 router.get('/:state/:activities', (req, res, next) => {
-    pageRefresh(req, res, next);
+    activityPageRefresh(req, res, next);
 });
 
 //CREATE a new activity
 router.post('/:state/:activities', (req, res, next) => {
     Activity.create(req.body)
-        .then(() => pageRefresh(req, res, next))
+        .then(() => activityPageRefresh(req, res, next))
         .catch(next);
 });
+
+//Call for data to update edit modal with selection
+router.get("/api/activity/:id", (req, res) => {
+    Activity.findById(req.params.id)
+        .then((data) => res.json(data));
+})
 
 //UPDATE an existing activity
 router.put('/:state/:activities/:activityID', (req, res, next) => {
     Activity.findByIdAndUpdate(req.params.activityID, req.body, { new: true })
-        .then(() => pageRefresh(req, res, next))
+        .then(() => activityPageRefresh(req, res, next))
         .catch(next);
 });
 
 //REMOVE an existing activity
 router.delete('/:state/:activities/:activityID', (req, res, next) => {
     Activity.findByIdAndRemove(req.params.activityID)
-        .then(() => pageRefresh(req, res, next))
+        .then(() => activityPageRefresh(req, res, next))
         .catch(next);
 });
 

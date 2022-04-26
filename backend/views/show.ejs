@@ -19,16 +19,23 @@
     
     <!-- Page Header -->
     <div align="center">
-        <!-- img source: https://as1.ftcdn.net/v2/jpg/03/24/73/92/1000_F_324739203_keeq8udvv0P2h1MLYJ0GLSlTBagoXS48.jpg -->
-        <div id="image-banner" style="background-image: url('/imgs/hotels-large.jpeg')">  
-            <% if (type === 'Restaurant') { %>
+        <% if (type==='Restaurant' ) { %>
+            <!-- img source: https://unsplash.com/photos/zlABb6Gke24 -->
+            <div id="image-banner" style="background-image: url('/imgs/restaurant-large.jpg')">
                 <h1>Restaurants</h1>
-            <% } else if (type === 'Hotel') { %> 
+            </div>
+        <% } else if (type==='Hotel' ) { %>
+            <!-- img source: https://www.eherg.com/blog/2017/12/24/the-best-free-views-of-detroits-unique-skyline -->
+            <div id="image-banner" style="background-image: url('/imgs/hotels-large.jpeg')">
                 <h1>Hotels</h1>
-            <% } else { %>
+            </div>
+        <% } else { %>
+            <!-- img source: https://architecture.desktopnexus.com/wallpaper/1415155/ -->
+            <div id="image-banner" style="background-image: url('/imgs/entertainment-large.jpeg')">
                 <h1>Entertainment</h1>
-            <% } %>
-        </div>
+            </div>
+        <% } %>
+        
     </div>
     
     <!-- Convert current filter parameters to a string variable -->

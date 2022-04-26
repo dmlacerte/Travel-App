@@ -41,7 +41,7 @@ p {
 
 path {
     stroke: rgb(151, 149, 149);
-    fill:lightgray !important;
+    /* fill:lightgray !important; */
     transition: fill .2s ease;
     transform-origin: center center;
 }

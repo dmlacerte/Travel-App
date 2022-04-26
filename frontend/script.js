@@ -1,6 +1,36 @@
 let stateNameBox = document.querySelector('#state-name-box');
 let statePageLink = document.querySelector('#state-page-link');
+let states = document.querySelectorAll('path');
 
+//Update state color based on state data
+let haveVisitedArr = ["MA"];
+let wantToVistArr = [];
+
+axios.get(`/api/updateStateData`) 
+  .then(stateData => {
+    let states = stateData.data;
+    states.forEach(state => {
+      if (state.haveVisited) {
+        console.log(state.name)
+        haveVisitedArr.push(state.name);
+      } else if (state.wantToVisit) {
+        wantToVistArr.push(state.name);
+      }
+    })
+  })
+  .then(() => {
+    states.forEach(state => {
+      if (haveVisitedArr.includes(state.dataset.id)) {
+        state.style.fill = "rgb(133, 196, 133)";
+      } else if (wantToVistArr.includes(state.dataset.id)) {
+        state.style.fill = "rgb(231, 231, 172)";
+      } else {
+        state.style.fill = "lightgray";
+      }
+    });
+  })
+
+//Set state name box on hover
 document.addEventListener('mouseover', (ev) => {
   if (ev.target.tagName === 'path') {
     let content = ev.target.dataset.name;
@@ -15,6 +45,7 @@ document.addEventListener('mouseover', (ev) => {
   }
 });
 
+//Adjust position of state name box
 window.onmousemove = (ev) => {
   let xAxis = ev.clientX;
   let yAxis = ev.clientY;

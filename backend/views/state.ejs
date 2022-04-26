@@ -15,6 +15,7 @@
     <title>State Page</title>
 </head>
 <body>
+    <!-- Page Header -->
     <nav class="navbar navbar-expand-lg fixed-top">  
         <div>
         <a class="navbar-brand" href="#">
@@ -23,11 +24,36 @@
         <p class="subtext">Easily plan & record all your domestic travels, big and small.</p>
         </div>
     </nav>
+
+    <!-- Form to Update State Data -->
     <h1 id="stateHeader" align="center"> <%=state%> </h1>
+    <form action="/<%=state%>/updateData?_method=PUT" method="POST" class="d-inline">
+        <div>
+            <% if (stateData.haveVisited) { %> 
+                <input type="checkbox" id="visitStatus" name="haveVisited" checked="true">
+            <% } else { %> 
+                <input type="checkbox" id="visitStatus" name="haveVisited">
+            <% } %>
+            <label for="visitStatus">Have Visited?</label>
+        </div>
+        <div>
+            <% if (stateData.wantToVisit) { %> 
+                <input type="checkbox" id="wantToVisitStatus" name="wantToVisit" checked="true">
+            <% } else { %>
+                <input type="checkbox" id="wantToVisitStatus" name="wantToVisit">
+            <% } %>
+            <label for="wantToVisitStatus">Want to Visit?</label>
+        </div>
+        <div>
+          <button type="submit">Update</button>
+        </div>
+    </form>
+
+    <!-- Link Boxes for Activities -->
     <div class="d-flex flex-row justify-content-between w-75 mx-auto">
         <div class="p-2 border border-info w-30" align="center">
-            <!-- img source: https://as1.ftcdn.net/v2/jpg/03/24/73/92/1000_F_324739203_keeq8udvv0P2h1MLYJ0GLSlTBagoXS48.jpg -->
-            <div style="background-image: url('/imgs/rest.jpeg')">
+            <!-- img source: https://unsplash.com/photos/zlABb6Gke24 -->
+            <div style="background-image: url('/imgs/restaurant.jpg')">
                 <h3>Restaurants</h3>
             </div>
             <% let restArr = activities.filter(activity => activity.type === 'Restaurant') %>
