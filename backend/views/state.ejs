@@ -114,13 +114,19 @@
                     <h3>Restaurants</h3>
                 </div> 
                 <% let restArr = activities.filter(activity => activity.type === 'Restaurant') %>
-                <% let restCount %>
-                <% restArr.length > 5 ? restCount = 5 : restCount = restArr.length %> 
-                <div class="activityList">
-                    <% for (let i = 0; i < restCount; i++) { %>
-                            <div> <%= restArr[i].name %> </div>
-                    <% } %>
-                </div>
+                <% if (restArr.length === 0) { %>
+                    <div class="activityList">
+                        <div class="font-italic"> Nothing added here yet, click below to add something! </div>
+                    </div>
+                <% } else { %>
+                    <% let restCount %>
+                    <% restArr.length > 5 ? restCount = 5 : restCount = restArr.length %> 
+                    <div class="activityList">
+                        <% for (let i = 0; i < restCount; i++) { %>
+                                <div> <%= restArr[i].name %> </div>
+                        <% } %>
+                    </div>
+                <% } %>
                 <div class="viewLink">
                     <a class="navLink" href="http://localhost:3000/<%=state%>/Restaurant">View / Edit All</a>
                 </div>
@@ -133,13 +139,19 @@
                     <h3>Hotels</h3>
                 </div>
                 <% let hotelArr = activities.filter(activity => activity.type === 'Hotel') %>
-                <% let hotelCount %>
-                <% hotelArr.length > 5 ? hotelCount = 5 : hotelCount = hotelArr.length %> 
-                <div>
-                    <% for (let i = 0; i < hotelCount; i++) { %>
-                        <div> <%= hotelArr[i].name %> </div>
-                    <% } %>
-                </div>
+                <% if (hotelArr.length === 0) { %>
+                    <div class="activityList">
+                        <div class="font-italic"> Nothing added here yet, click below to add something! </div>
+                    </div>
+                <% } else { %>
+                    <% let hotelCount %>
+                    <% hotelArr.length > 5 ? hotelCount = 5 : hotelCount = hotelArr.length %> 
+                    <div>
+                        <% for (let i = 0; i < hotelCount; i++) { %>
+                            <div> <%= hotelArr[i].name %> </div>
+                        <% } %>
+                    </div>
+                <% } %>
                 <div class="viewLink">
                     <a class="navLink" href="http://localhost:3000/<%=state%>/Hotel">View / Edit All</a>
                 </div>
@@ -152,13 +164,19 @@
                     <h3>Entertainment</h3>
                 </div>
                 <% let entertainmentArr = activities.filter(activity => activity.type === 'Entertainment') %>
-                <% let entertainmentCount %>
-                <% entertainmentArr.length > 5 ? entertainmentCount = 5 : entertainmentCount = entertainmentArr.length %> 
-                <div>
-                    <% for (let i = 0; i < entertainmentCount; i++) { %>
-                        <div> <%= entertainmentArr[i].name %> </div>
-                    <% } %>
-                </div>
+                <% if (entertainmentArr.length === 0) { %>
+                    <div class="activityList">
+                        <div class="font-italic"> Nothing added here yet, click below to add something! </div>
+                    </div>
+                <% } else { %>
+                    <% let entertainmentCount %>
+                    <% entertainmentArr.length > 5 ? entertainmentCount = 5 : entertainmentCount = entertainmentArr.length %> 
+                    <div>
+                        <% for (let i = 0; i < entertainmentCount; i++) { %>
+                            <div> <%= entertainmentArr[i].name %> </div>
+                        <% } %>
+                    </div>
+                <% } %>
                 <div class="viewLink">
                     <a class="navLink" href="http://localhost:3000/<%=state%>/Entertainment">View / Edit All</a>
                 </div>
