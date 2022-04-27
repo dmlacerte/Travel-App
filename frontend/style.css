@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 
-html, h1, h2, h3, h4, h5, h6, a, p {
+html, h1, h2, h3, h4, h5, h6, a, p, b {
     font-family: "Raleway";
 }
 
@@ -38,6 +38,15 @@ p {
     text-align: center;
     font-size: 20px;
 }
+
+.colorKey {
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+/* b {
+    font-size: large;
+} */
 
 path {
     stroke: rgb(151, 149, 149);
