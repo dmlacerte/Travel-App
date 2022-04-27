@@ -35,8 +35,8 @@ document.addEventListener('mouseover', (ev) => {
 		let content = ev.target.dataset.name;
 		stateNameBox.innerHTML = content;
 		stateNameBox.style.opacity = "100%";
-		// statePageLink.setAttribute('href', `https://dml-mytravelapp.herokuapp.com/${ev.target.dataset.id}`);
-		statePageLink.setAttribute('href', `http://localhost:3000/${ev.target.dataset.id}`);
+		statePageLink.setAttribute('href', `https://dml-mytravelapp.herokuapp.com/${ev.target.dataset.id}`);
+		// statePageLink.setAttribute('href', `http://localhost:3000/${ev.target.dataset.id}`);
 	}
 	else {
 		stateNameBox.style.opacity = "0%";

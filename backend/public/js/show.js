@@ -39,7 +39,7 @@ function updateDropdownSelection(dataSelection, arr, elementToUpdate) {
 editModalButtons.forEach(button => button.addEventListener('click', updateEditModal));
 
 function updateEditModal(ev) {
-    axios.get(`http://localhost:3000/api/activity/${ev.target.id}`)    
+    axios.get(`https://dml-mytravelapp.herokuapp.com/api/activity/${ev.target.id}`)    
         .then((activity) => {
             //Pull current page filters
             let queryStart = filterButton.href.indexOf('?');
@@ -47,7 +47,7 @@ function updateEditModal(ev) {
             console.log(`filter: ${queryFilter}`)
 
             //Set Edit fields
-            editModalForm.setAttribute('action', `http://localhost:3000/${activity.data.state}/${activity.data.type}/${activity.data._id}?_method=PUT&${queryFilter}`)
+            editModalForm.setAttribute('action', `https://dml-mytravelapp.herokuapp.com/${activity.data.state}/${activity.data.type}/${activity.data._id}?_method=PUT&${queryFilter}`)
             editModalForm[0].setAttribute('value', activity.data.name)
             let currentType = activity.data.type
             resetDropdownOptions(typeOptions, editModalForm[1])
