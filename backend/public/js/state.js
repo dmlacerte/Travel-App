@@ -5,7 +5,7 @@ const filterOptions = document.querySelectorAll('.filterOptions');
 
 //Data Arrays
 import {stateMap} from './stateMap.js';
-stateHeader.innerText = stateMap[stateHeader[data-id]];
+stateHeader.innerText = stateMap[stateHeader.dataset.id];
 
 //Update query parameters when filter buttons selected
 filterButton.addEventListener('mouseover', updateFilterQuery);
