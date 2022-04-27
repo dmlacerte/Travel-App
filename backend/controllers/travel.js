@@ -4,8 +4,9 @@ const Activity = require('../models/activities-model.js');
 const State = require('../models/state-model.js');
 
 function statePageRefresh(req, res, next, stateData) {
-    Activity.find({ state: req.params.state })
-        .then(activities => res.render('state', { activities, stateData, state: req.params.state }))
+    req.query.state = req.params.state;
+    Activity.find( req.query )
+        .then(activities => res.render('state', { activities, stateData, state: req.params.state, query: req.query }))
         .catch(next);
 }
 

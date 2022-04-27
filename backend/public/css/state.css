@@ -5,7 +5,7 @@
     margin: 10px;
 }
 
-html, h1, h2, h3, h4, h5, h6, a, p {
+html, body, h1, h2, h3, h4, h5, h6, a, p, label, button {
     font-family: "Raleway";
 }
 
@@ -36,10 +36,47 @@ html, body {
     padding: 0px;
 }
 
+.activityBox {
+    position: relative;
+}
+
+.viewLink {
+    bottom: 0;
+    position: absolute;
+    background: lightgray;
+    width: 100%;
+}
+
+.activityList {
+    margin-top: 5%;
+}
+
+.btn {
+    font-size: smaller;
+}
+
 p {
     margin: 0px;
+    font-size: 20px;
+}
+
+label {
+    margin: 7px;
+}
+
+select {
+    margin-bottom: 10px;
+}
+
+#cityLabel {
+    margin-right: 70px;
+}
+
+.navLink {
+    color: white;
 }
 
 #stateHeader {
     margin: 10px 0px;
+    font-size: 65px;
 }

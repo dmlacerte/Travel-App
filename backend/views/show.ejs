@@ -46,7 +46,7 @@
     <!-- Define Possible Filters -->
     <div class="d-flex flex-row">
         <div class="w-25 p-3" id="filterBox">
-            <form action="" method="get" class="d-inline">
+            <form action="" method="GET" class="d-inline">
                 <div class="modal-body">
                     <p align="center" id="filtersTitle"><%=state%> <%=type%> Filters</p>
                     <label for="name">Name:</label>
@@ -109,8 +109,8 @@
                             </option> 
                         <% } %>
                     </select>
-                    <label for="plannedTrip">Planned Trip:</label>
-                    <select id="plannedTrip" name="plannedTrip" class="form-control filterOptions" value="">
+                    <label for="relatedTrip">Planned Trip:</label>
+                    <select id="relatedTrip" name="relatedTrip" class="form-control filterOptions" value="">
                         <option disabled selected value> -- </option>
                         <% let tripOptionsArr = [] %> 
                         <% for (let i = 0; i < activities.length; i++) { %>

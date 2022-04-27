@@ -25,82 +25,144 @@
         </div>
     </nav>
 
+    <h1 id="stateHeader" align="center" class="mt-4"> <%=state%> </h1>
+
     <!-- Form to Update State Data -->
-    <h1 id="stateHeader" align="center"> <%=state%> </h1>
-    <form action="/<%=state%>/updateData?_method=PUT" method="POST" class="d-inline">
-        <div>
-            <% if (stateData.haveVisited) { %> 
-                <input type="checkbox" id="visitStatus" name="haveVisited" checked="true">
-            <% } else { %> 
-                <input type="checkbox" id="visitStatus" name="haveVisited">
-            <% } %>
-            <label for="visitStatus">Have Visited?</label>
-        </div>
-        <div>
-            <% if (stateData.wantToVisit) { %> 
-                <input type="checkbox" id="wantToVisitStatus" name="wantToVisit" checked="true">
-            <% } else { %>
-                <input type="checkbox" id="wantToVisitStatus" name="wantToVisit">
-            <% } %>
-            <label for="wantToVisitStatus">Want to Visit?</label>
-        </div>
-        <div>
-          <button type="submit">Update</button>
-        </div>
-    </form>
+    <div align="center" class="mt-4">
+        <form action="/<%=state%>/updateData?_method=PUT" method="POST" class="d-inline">
+            <div class="d-flex justify-content-center">
+                <div class="mr-2">
+                    <% if (stateData.haveVisited) { %> 
+                        <input type="checkbox" id="visitStatus" name="haveVisited" checked="true">
+                    <% } else { %> 
+                        <input type="checkbox" id="visitStatus" name="haveVisited">
+                    <% } %>
+                    <label for="visitStatus">Have Visited?</label>
+                </div>
+                <div>
+                    <% if (stateData.wantToVisit) { %> 
+                        <input type="checkbox" id="wantToVisitStatus" name="wantToVisit" checked="true">
+                    <% } else { %>
+                        <input type="checkbox" id="wantToVisitStatus" name="wantToVisit">
+                    <% } %>
+                    <label for="wantToVisitStatus">Want to Visit?</label>
+                </div>
+            </div>
+            <div>
+            <button class="btn btn-secondary" type="submit">Update State</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Convert current filter parameters to a string variable -->
+    <% delete query.state %> 
+    <% let currentFilter = Object.keys(query).map(key => `${key}=${query[key]}`).join('&') %>
+
+    <!-- Page Filters -->
+    <div align="center" class="mt-5">
+        <p class="mb-2" >Use the filters below to see sample added activities!</p>
+        <form action="" method="GET">
+            <div class="d-flex justify-content-center w-75">
+                <label id="cityLabel" for="city">City:</label>
+                <select id="city" name="city" class="form-control filterOptions w-25" value="">
+                    <option disabled selected value> -- </option>
+                    <% let cityOptionsArr = [] %> 
+                    <% for (let i = 0; i < activities.length; i++) { %>
+                        <% if (!cityOptionsArr.includes(activities[i].city)) { %>
+                            <% cityOptionsArr.push(activities[i].city) %> 
+                            <option value="<%=activities[i].city%>" 
+                                <% if (Object.values(query).includes(activities[i].city)) { %>
+                                    selected=true
+                                <% } %>
+                                ><%=activities[i].city%>
+                            </option>
+                        <% } %> 
+                    <% } %>
+                </select>
+            </div>
+            <div class="d-flex justify-content-center w-75">
+                <label for="relatedTrip">Planned Trip:</label>
+                <select id="relatedTrip" name="relatedTrip" class="form-control filterOptions w-25" value="">
+                    <option disabled selected value> -- </option>
+                    <% let tripOptionsArr = [] %> 
+                    <% for (let i = 0; i < activities.length; i++) { %>
+                        <% if (!tripOptionsArr.includes(activities[i].relatedTrip)) { %>
+                            <% tripOptionsArr.push(activities[i].relatedTrip) %> 
+                            <option value="<%=activities[i].relatedTrip%>" 
+                                <% if (Object.values(query).includes(activities[i].relatedTrip)) { %>
+                                    selected=true
+                                <% } %>
+                                ><%=activities[i].relatedTrip%>
+                            </option>
+                        <% } %> 
+                     <% } %>
+                </select>
+            </div>
+            <div class="justify-content-center mt-3">
+                <a class="btn btn-secondary" href="http://localhost:3000/<%=state%>/?<%=currentFilter%>" id="filterButton">Filter</a>
+                <a class="btn btn-secondary" href="http://localhost:3000/<%=state%>/" id="resetFilterButton">Reset Filter</a>
+            </div>
+        </form>
+    </div>
 
     <!-- Link Boxes for Activities -->
-    <div class="d-flex flex-row justify-content-between w-75 mx-auto">
+    <div class="d-flex flex-row justify-content-between w-75 mx-auto mt-5">
         <div class="p-2 border border-info w-30" align="center">
-            <!-- img source: https://unsplash.com/photos/zlABb6Gke24 -->
-            <div style="background-image: url('/imgs/restaurant.jpg')">
-                <h3>Restaurants</h3>
+            <div class="activityBox" style="height: 13em">
+                <!-- img source: https://unsplash.com/photos/zlABb6Gke24 -->
+                <div style="background-image: url('/imgs/restaurant.jpg')">
+                    <h3>Restaurants</h3>
+                </div> 
+                <% let restArr = activities.filter(activity => activity.type === 'Restaurant') %>
+                <% let restCount %>
+                <% restArr.length > 5 ? restCount = 5 : restCount = restArr.length %> 
+                <div class="activityList">
+                    <% for (let i = 0; i < restCount; i++) { %>
+                            <div> <%= restArr[i].name %> </div>
+                    <% } %>
+                </div>
+                <div class="viewLink">
+                    <a class="navLink" href="http://localhost:3000/<%=state%>/Restaurant">View / Edit All</a>
+                </div>
             </div>
-            <% let restArr = activities.filter(activity => activity.type === 'Restaurant') %>
-            <% let restCount %>
-            <% restArr.length > 5 ? restCount = 5 : restCount = restArr.length %> 
-            <ul class="list-group">
-                <% for (let i = 0; i < restCount; i++) { %>
-                    <li class="d-flex justify-content-between">
-                        <div> <%= restArr[i].name %> </div>
-                    </li>
-                <% } %>
-            </ul>
-            <a href="http://localhost:3000/<%=state%>/Restaurant">View All</a>
         </div>
         <div class="p-2 border border-info w-30" align="center">
-            <!-- img source: https://www.eherg.com/blog/2017/12/24/the-best-free-views-of-detroits-unique-skyline -->
-            <div style="background-image: url('/imgs/hotels.jpeg')">
-                <h3>Hotels</h3>
-            </div>
-            <% let hotelArr = activities.filter(activity => activity.type === 'Hotel') %>
-            <% let hotelCount %>
-            <% hotelArr.length > 5 ? hotelCount = 5 : hotelCount = hotelArr.length %> 
-            <ul class="list-group">
-                <% for (let i = 0; i < hotelCount; i++) { %>
-                    <li class="d-flex justify-content-between">
+            <div class="activityBox" style="height: 13em">
+                <!-- img source: https://www.eherg.com/blog/2017/12/24/the-best-free-views-of-detroits-unique-skyline -->
+                <div style="background-image: url('/imgs/hotels.jpeg')">
+                    <h3>Hotels</h3>
+                </div>
+                <% let hotelArr = activities.filter(activity => activity.type === 'Hotel') %>
+                <% let hotelCount %>
+                <% hotelArr.length > 5 ? hotelCount = 5 : hotelCount = hotelArr.length %> 
+                <div>
+                    <% for (let i = 0; i < hotelCount; i++) { %>
                         <div> <%= hotelArr[i].name %> </div>
-                    </li>
-                <% } %>
-            </ul>
-            <a href="http://localhost:3000/<%=state%>/Hotel">View All</a>
+                    <% } %>
+                </div>
+                <div class="viewLink">
+                    <a class="navLink" href="http://localhost:3000/<%=state%>/Hotel">View / Edit All</a>
+                </div>
+            </div>
         </div>
         <div class="p-2 border border-info w-30" align="center">
-            <!-- img source: https://architecture.desktopnexus.com/wallpaper/1415155/ -->
-            <div style="background-image: url('/imgs/entertainment.jpeg')">
-                <h3>Entertainment</h3>
-            </div>
-            <% let entertainmentArr = activities.filter(activity => activity.type === 'Entertainment') %>
-            <% let entertainmentCount %>
-            <% entertainmentArr.length > 5 ? entertainmentCount = 5 : entertainmentCount = entertainmentArr.length %> 
-            <ul class="list-group">
-                <% for (let i = 0; i < entertainmentCount; i++) { %>
-                    <li class="d-flex justify-content-between">
+            <div class="activityBox" style="height: 13em">
+                <!-- img source: https://architecture.desktopnexus.com/wallpaper/1415155/ -->
+                <div style="background-image: url('/imgs/entertainment.jpeg')">
+                    <h3>Entertainment</h3>
+                </div>
+                <% let entertainmentArr = activities.filter(activity => activity.type === 'Entertainment') %>
+                <% let entertainmentCount %>
+                <% entertainmentArr.length > 5 ? entertainmentCount = 5 : entertainmentCount = entertainmentArr.length %> 
+                <div>
+                    <% for (let i = 0; i < entertainmentCount; i++) { %>
                         <div> <%= entertainmentArr[i].name %> </div>
-                    </li>
-                <% } %>
-            </ul>
-            <a href="http://localhost:3000/<%=state%>/Entertainment">View All</a>
+                    <% } %>
+                </div>
+                <div class="viewLink">
+                    <a class="navLink" href="http://localhost:3000/<%=state%>/Entertainment">View / Edit All</a>
+                </div>
+            </div>
         </div>
     </div>
 </body>
