@@ -141,6 +141,7 @@
                     <li class="list-group-item d-flex justify-content-between">
                     <div> <%= activities[i].name %> </div>
                     <div class="links">
+                        <button type="button" onclick="window.open(`http://google.com/maps/search/<%=activities[i].name%> <%=activities[i].address%>`)" class="btn btn-secondary">Search Maps</button>
                         <button type="button" class="btn btn-info editModalButton" data-toggle="modal" data-target="#editModal" id="<%=activities[i]._id%>">View / Edit</button> 
                         <form action="/<%=activities[i].state%>/<%=activities[i].type%>/<%=activities[i].id%>?_method=DELETE&<%=currentFilter%>" method="POST" class="d-inline">
                             <input type="submit" value="Delete" class="btn btn-danger" />
