@@ -16,7 +16,7 @@ A trip management website, where you can plan and record your travels around the
 ![home-page](https://user-images.githubusercontent.com/97196460/165792538-8978261e-261e-4aba-8bcc-93d99e4d3c1e.gif)
 
 **State Page:** <br />
-
+![state-page](https://user-images.githubusercontent.com/97196460/165793010-88065764-7e0c-43de-a73f-2befe59e2344.gif)
 
 **Activity Page - CRUD Activities:** <br />
 
