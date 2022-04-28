@@ -13,15 +13,19 @@
 A trip management website, where you can plan and record your travels around the U.S. (restaurants, hotels, entertainment, etc.). You can track wishlist places as well as places visited, and add comments with your thoughts.
 <br /> <br />
 **Home Page:** <br />
+
 ![home-page](https://user-images.githubusercontent.com/97196460/165792538-8978261e-261e-4aba-8bcc-93d99e4d3c1e.gif)
 
 **State Page:** <br />
+
 ![state-page](https://user-images.githubusercontent.com/97196460/165793010-88065764-7e0c-43de-a73f-2befe59e2344.gif)
 
 **Activity Page - CRUD Activities:** <br />
+
 ![activity-page-CRUD](https://user-images.githubusercontent.com/97196460/165793606-77c43cf2-9272-488e-a43f-477c99bbe77a.gif)
 
 **Activity Page - Filters & Google Maps Link:** <br />
+
 ![activity-page-filters](https://user-images.githubusercontent.com/97196460/165793644-4d52d76a-0590-4291-a64b-17b1d0258a92.gif)
 
 **Access Site At Link Below** <br /> <br />
