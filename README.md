@@ -34,7 +34,11 @@ https://dml-mytravelapp.herokuapp.com/
 - As a user, I want to be able to apply filters to more easily view activities. 
 
 **Original Wire Frame**
-![image](https://media.git.generalassemb.ly/user/41174/files/3ad0fe80-9baf-11ec-8943-9cc7e04a6629)
+![image](https://user-images.githubusercontent.com/97196460/165791642-64d8a58b-5789-4bb2-8f12-8930355efc47.png)
+
+![image](https://user-images.githubusercontent.com/97196460/165791668-df3b4e9f-4768-409b-a6c3-ea15186c3b61.png)
+
+![image](https://user-images.githubusercontent.com/97196460/165791715-953b1301-cc2c-4aa8-bfa3-5e888df1ed54.png)
 
 **MVP Goals**
 - [x] Have a home page where you can select and navigate to each of the individual state pages.
