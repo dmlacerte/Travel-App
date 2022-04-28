@@ -86,7 +86,7 @@
                     <option disabled selected value> -- </option>
                     <% let tripOptionsArr = [] %> 
                     <% for (let i = 0; i < activities.length; i++) { %>
-                        <% if (!tripOptionsArr.includes(activities[i].relatedTrip)) { %>
+                        <% if (!tripOptionsArr.includes(activities[i].relatedTrip) && activities[i].relatedTrip) { %>
                             <% tripOptionsArr.push(activities[i].relatedTrip) %> 
                             <option value="<%=activities[i].relatedTrip%>" 
                                 <% if (Object.values(query).includes(activities[i].relatedTrip)) { %>

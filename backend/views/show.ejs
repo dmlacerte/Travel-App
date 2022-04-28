@@ -114,7 +114,7 @@
                         <option disabled selected value> -- </option>
                         <% let tripOptionsArr = [] %> 
                         <% for (let i = 0; i < activities.length; i++) { %>
-                            <% if (!tripOptionsArr.includes(activities[i].relatedTrip)) { %>
+                            <% if (!tripOptionsArr.includes(activities[i].relatedTrip) && activities[i].relatedTrip) { %>
                                 <% tripOptionsArr.push(activities[i].relatedTrip) %> 
                                 <option value="<%=activities[i].relatedTrip%>" 
                                     <% if (Object.values(query).includes(activities[i].relatedTrip)) { %>
@@ -126,6 +126,7 @@
                         <% } %>
                     </select>
                 </div>
+                <!-- Buttons to Set / Reset Filters -->
                 <div class="modal-footer justify-content-center"> 
                     <a href="https://dml-mytravelapp.herokuapp.com/<%=state%>/<%=type%>/?<%=currentFilter%>" id="filterButton">Filter</a>
                     <a href="https://dml-mytravelapp.herokuapp.com/<%=state%>/<%=type%>/" id="resetFilterButton">Reset Filter</a>
@@ -135,6 +136,7 @@
 
         <!-- Activity Content -->
         <div class="activity-list w-75 p-3" id="contentBox">
+            <!-- Create row and associated buttons for each returned entry -->
             <ul class="list-group">
                 <% let i = 0 %>
                 <% while (i < activities.length) { %>

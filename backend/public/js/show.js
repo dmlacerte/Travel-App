@@ -44,7 +44,6 @@ function updateEditModal(ev) {
             //Pull current page filters
             let queryStart = filterButton.href.indexOf('?');
             let queryFilter = filterButton.href.slice(queryStart + 1);
-            console.log(`filter: ${queryFilter}`)
 
             //Set Edit fields
             editModalForm.setAttribute('action', `https://dml-mytravelapp.herokuapp.com/${activity.data.state}/${activity.data.type}/${activity.data._id}?_method=PUT&${queryFilter}`)

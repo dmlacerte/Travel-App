@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 
+/* General Page */
 html, h1, h2, h3, h4, h5, h6, a, p, b {
     font-family: "Raleway";
 }
@@ -8,6 +9,7 @@ html {
     background-color: whitesmoke;
 }
 
+/* Header */
 .header {
     font-weight: bold;
     font-size: larger;
@@ -27,6 +29,7 @@ html {
     padding: 0px;
 }
 
+/* Bottom Message / Color Key */
 p {
     margin: 0px;
 }
@@ -44,20 +47,11 @@ p {
     font-size: 16px;
 }
 
-/* b {
-    font-size: large;
-} */
-
+/* Map */
 path {
     stroke: rgb(151, 149, 149);
-    /* fill:lightgray !important; */
     transition: fill .2s ease;
     transform-origin: center center;
-}
-
-path:hover {
-    fill: lightblue !important;
-    cursor: pointer;
 }
 
 #us-map {
@@ -70,6 +64,12 @@ path:hover {
     height: 80%;
 }
 
+/* State Name Hover */
+path:hover {
+    fill: lightblue !important;
+    cursor: pointer;
+}
+
 #state-name-box {
     opacity: 0;
     padding: 12px;
@@ -77,10 +77,8 @@ path:hover {
     font-size: 18px;
     position: fixed;
     color: white;
-    /* font-family: "Poppins"; */
     background-color: rgb(100, 99, 99);
     width: fit-content;
-    /* transform: translateX(-50%); */
     z-index: 1;
     box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.55);
 }

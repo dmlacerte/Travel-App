@@ -1,3 +1,4 @@
+//DOM Elements
 let stateNameBox = document.querySelector('#state-name-box');
 let statePageLink = document.querySelector('#state-page-link');
 let states = document.querySelectorAll('path');
@@ -7,6 +8,7 @@ let haveVisitedArr = [];
 let wantToVistArr = [];
 
 axios.get(`/api/updateStateData`) 
+	//Call to get state data, then update arrays based on data received
 	.then(stateData => {
 		let states = stateData.data;
 		states.forEach(state => {
@@ -15,8 +17,9 @@ axios.get(`/api/updateStateData`)
 		} else if (state.wantToVisit) {
 			wantToVistArr.push(state.name);
 		}
-		})
+		});
 	})
+	//Update colors based on data arrays
 	.then(() => {
 		states.forEach(state => {
 		if (haveVisitedArr.includes(state.dataset.id)) {
@@ -27,16 +30,15 @@ axios.get(`/api/updateStateData`)
 			state.style.fill = "lightgray";
 		}
 		});
-	})
+	});
 
-//Set state name box on hover
+//Set state name box and hyperlink on hover
 document.addEventListener('mouseover', (ev) => {
 	if (ev.target.tagName === 'path') {
 		let content = ev.target.dataset.name;
 		stateNameBox.innerHTML = content;
 		stateNameBox.style.opacity = "100%";
 		statePageLink.setAttribute('href', `https://dml-mytravelapp.herokuapp.com/${ev.target.dataset.id}`);
-		// statePageLink.setAttribute('href', `http://localhost:3000/${ev.target.dataset.id}`);
 	}
 	else {
 		stateNameBox.style.opacity = "0%";
@@ -44,7 +46,7 @@ document.addEventListener('mouseover', (ev) => {
 	}
 });
 
-//Adjust position of state name box
+//Adjust position of state name box to follow mouse 
 window.onmousemove = (ev) => {
 	let xAxis = ev.clientX;
 	let yAxis = ev.clientY;

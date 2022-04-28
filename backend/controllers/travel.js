@@ -3,6 +3,7 @@ const router = express.Router();
 const Activity = require('../models/activities-model.js');
 const State = require('../models/state-model.js');
 
+//Helper functions to refresh pages after CRUD actions 
 function statePageRefresh(req, res, next, stateData) {
     req.query.state = req.params.state;
     Activity.find( req.query )
@@ -18,6 +19,7 @@ function activityPageRefresh(req, res, next) {
         .catch(next);
 }
 
+//Call to provide state data when rendering homepage
 router.get('/api/updateStateData', (req, res, next) => {
     State.find({})
         .then((stateData) => res.json(stateData));

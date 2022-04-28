@@ -1,10 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 
-.border-info {
-    flex: 1 1 0;
-    margin: 10px;
-}
-
+/* General Page */
 html, body, h1, h2, h3, h4, h5, h6, a, p, label, button {
     font-family: "Raleway";
 }
@@ -17,6 +13,7 @@ html, body {
     background-color: whitesmoke;
 }
 
+/* Header */
 .header {
     font-weight: bold;
     font-size: larger;
@@ -36,28 +33,19 @@ html, body {
     padding: 0px;
 }
 
-.activityBox {
-    position: relative;
+p {
+    margin: 0px;
+    font-size: 20px;
 }
 
-.viewLink {
-    bottom: 0;
-    position: absolute;
-    background: lightgray;
-    width: 100%;
-}
-
-.activityList {
-    margin-top: 5%;
+/* State Forms / Filters */
+#stateHeader {
+    margin: 10px 0px;
+    font-size: 65px;
 }
 
 .btn {
     font-size: smaller;
-}
-
-p {
-    margin: 0px;
-    font-size: 20px;
 }
 
 label {
@@ -72,11 +60,23 @@ select {
     margin-right: 70px;
 }
 
-.navLink {
-    color: white;
+/* Activity Sections / Links */
+.border-info {
+    flex: 1 1 0;
+    margin: 10px;
 }
 
-#stateHeader {
-    margin: 10px 0px;
-    font-size: 65px;
+.activityBox {
+    position: relative;
+}
+
+.viewLink {
+    bottom: 0;
+    position: absolute;
+    background: lightgray;
+    width: 100%;
+}
+
+.navLink {
+    color: white;
 }

@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 
+/* General Page */
 html, h1, h2, h3, h4, h5, h6, a, p {
     font-family: "Raleway";
 }
@@ -8,36 +9,7 @@ html, body {
     background-color: whitesmoke;
 }
 
-#filterBox {
-    position: fixed;
-    margin: 3% 0.6%;
-}
-
-#contentBox {
-    right: 0px;
-    position: relative;
-    left: 25%;
-    margin: 10px 0px 50px 0px;
-}
-
-#filtersTitle {
-    font-weight: 900;
-    font-size: larger;
-}
-
-.btn {
-    opacity: 0.85;
-    margin: 2px;
-}
-
-label {
-    margin-top: 6px;
-}
-
-.activity-list {
-    padding: 5px 15px;
-}
-
+/* Header */
 h1 {
     color: white;
     padding: 0px;
@@ -49,4 +21,36 @@ h1 {
     background-size: 100%;
     height: 75px;
     opacity: 0.8;
+}
+
+/* Filter Box */
+#filterBox {
+    position: fixed;
+    margin: 3% 0.6%;
+}
+
+#filtersTitle {
+    font-weight: 900;
+    font-size: larger;
+}
+
+label {
+    margin-top: 6px;
+}
+
+/* Activity List Section */
+#contentBox {
+    right: 0px;
+    position: relative;
+    left: 25%;
+    margin: 10px 0px 50px 0px;
+}
+
+.btn {
+    opacity: 0.85;
+    margin: 2px;
+}
+
+.activity-list {
+    padding: 5px 15px;
 }
