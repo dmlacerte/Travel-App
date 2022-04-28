@@ -13,7 +13,7 @@
 A trip management website, where you can plan and record your travels around the U.S. (restaurants, hotels, entertainment, etc.). You can track wishlist places as well as places visited, and add comments with your thoughts.
 <br /> <br />
 **Home Page:** <br />
-
+![home-page](https://user-images.githubusercontent.com/97196460/165792538-8978261e-261e-4aba-8bcc-93d99e4d3c1e.gif)
 
 **State Page:** <br />
 
@@ -33,7 +33,7 @@ https://dml-mytravelapp.herokuapp.com/
 - As a user, I want to be able to view, add, edit, and delete activities. 
 - As a user, I want to be able to apply filters to more easily view activities. 
 
-**Original Wire Frame**
+**Original Wire Frames**
 ![image](https://user-images.githubusercontent.com/97196460/165791642-64d8a58b-5789-4bb2-8f12-8930355efc47.png)
 
 ![image](https://user-images.githubusercontent.com/97196460/165791668-df3b4e9f-4768-409b-a6c3-ea15186c3b61.png)
